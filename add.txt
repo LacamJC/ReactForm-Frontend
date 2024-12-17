@@ -1,0 +1,36 @@
+import Home from './components/pages/Home'
+import CadastrarUsuario from './components/pages/CadastrarUsuario'
+import ListaUsuario from './components/pages/ListaUsuario'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import UsersList from './components/data/UsersList'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+function App() {
+  return (
+    <Router>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          
+          <li>
+            <Link to="/CadastrarUsuario">Cadastrar usuarios</Link>
+          </li>
+          
+          <li>
+            <Link to="/ListaUsuario">Lista de usuarios</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Routes>
+        <Route exact path="/" element={<Home/>}/>
+        <Route path="/CadastrarUsuario" element={<CadastrarUsuario />} />
+        <Route path="/ListaUsuario" element={<ListaUsuario/>}/>
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
