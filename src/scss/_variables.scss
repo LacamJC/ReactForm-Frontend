@@ -1,0 +1,7 @@
+$text-normal-shadow: 0px 2px 5px rgba(0,0,0,0.19);
+
+@mixin link__dest(){
+    color: black;
+    letter-spacing: 0.5px;
+    padding: 0px 5px;
+}

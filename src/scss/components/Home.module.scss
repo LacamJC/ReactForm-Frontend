@@ -1,0 +1,61 @@
+@import '../variables';
+p{
+    text-indent: 20px;
+}
+.cardDivHome{
+    background-color: rgb(241, 241, 241);
+    max-width: 600px;
+    height: 460px;
+    margin: auto;
+    padding: 20px;
+
+    border-radius: 12px;
+    box-shadow: -1px 0px 5px #0000001f;
+
+
+
+    background-image: url('../../../public/img/undraw_o01.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-origin: content-box;
+
+    h1{
+        text-shadow: 2px 2px 3px #0000004a;
+    }
+
+    p{
+        text-shadow: $text-normal-shadow;
+
+        .link__dest{
+            @include link__dest()
+        }
+    }
+}
+
+.imgServer{
+    width: 90%;
+}
+
+.cardDivBack{
+    // background-color: wheat;
+    max-width: 100%;
+    padding: 20px;
+    height: 500px;
+    @media screen and (min-width:768px){ padding: 50px 100px;}
+    margin: 50px auto;
+
+   
+   
+   
+   
+}  
+
+.cardDivFront{
+    max-width: 100%;
+    padding: 20px;
+    height: 500px;
+    @media screen and (min-width:768px){ padding: 50px 100px;}
+    margin: 50px auto;
+
+}

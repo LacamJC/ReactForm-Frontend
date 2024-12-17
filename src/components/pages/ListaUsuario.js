@@ -3,9 +3,11 @@ import UsersList from "../data/UsersList"
 function ListaUsuario(){
     return(
         <>
-            <h1>Pagina ListaUsuario</h1>
-
-            <UsersList />
+            
+            <div className="container">
+                <h1 className="text-center my-5">Usuarios cadastrados no sistema</h1>
+                <UsersList />
+            </div>
         </>
     )
 }

@@ -4,6 +4,7 @@ import Delete from '../events/Delete';
 
 function UsersList(){
     const [usuarios, setUsuarios] = useState([])
+    const [erro, setErro] = useState(false)
 
     function reset(){
         fetch("http://localhost:3001/getUsers", {
@@ -31,13 +32,19 @@ function UsersList(){
             }
           })
             .then(response => response.json())
+            .catch(error =>{
+              console.log(`ERRd: ${error}`)
+              setErro(true)
+            })
             .then(data => {
               console.log('Dados coletados');
               console.log(data);
               setUsuarios(data);
+              setErro(false)
             })
             .catch(error => {
               console.error(`Erro: ${error}`);
+              setErro(false)
             });
         
     }, [])
@@ -57,7 +64,17 @@ function UsersList(){
                 </tr>
             </thead>
             <tbody>
-                {usuarios.map((usuario)=>(
+            
+
+                {
+                  
+                  usuarios == undefined ? 
+                  (<td className='alert alert-danger my-5 mx-auto w-50'>Erro ao acessar banco de dados</td>
+                    
+                  )
+                  
+                  : 
+                  usuarios.map((usuario)=>(
                     <tr>
                         <th scope="row">{usuario.id}</th>
                         <td>{usuario.name}</td>
@@ -65,7 +82,13 @@ function UsersList(){
                         <Delete id={usuario.id} onClick={reset} />
                         <td style={{ fontSize: '24px' }}><IoIosAddCircle /></td>
                     </tr>
-                ))}
+                )) 
+                  
+                }
+
+              
+
+
             </tbody>
             </table>
         </>

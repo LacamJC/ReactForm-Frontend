@@ -1,0 +1,57 @@
+p {
+  text-indent: 20px;
+}
+
+.cardDivHome {
+  background-color: rgb(241, 241, 241);
+  max-width: 600px;
+  height: 460px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: -1px 0px 5px rgba(0, 0, 0, 0.1215686275);
+  background-image: url("../../../public/img/undraw_o01.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-origin: content-box;
+}
+.cardDivHome h1 {
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2901960784);
+}
+.cardDivHome p {
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.19);
+}
+.cardDivHome p .link__dest {
+  color: black;
+  letter-spacing: 0.5px;
+  padding: 0px 5px;
+}
+
+.imgServer {
+  width: 90%;
+}
+
+.cardDivBack {
+  max-width: 100%;
+  padding: 20px;
+  height: 500px;
+  margin: 50px auto;
+}
+@media screen and (min-width: 768px) {
+  .cardDivBack {
+    padding: 50px 100px;
+  }
+}
+
+.cardDivFront {
+  max-width: 100%;
+  padding: 20px;
+  height: 500px;
+  margin: 50px auto;
+}
+@media screen and (min-width: 768px) {
+  .cardDivFront {
+    padding: 50px 100px;
+  }
+}/*# sourceMappingURL=Home.module.css.map */
