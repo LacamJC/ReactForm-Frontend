@@ -10,6 +10,7 @@ p{
     padding: 20px;
 
     border-radius: 12px;
+    @media screen and (max-width: 600px){border-radius: 0px;}
     box-shadow: -1px 0px 5px #0000001f;
 
 
@@ -58,4 +59,11 @@ p{
     @media screen and (min-width:768px){ padding: 50px 100px;}
     margin: 50px auto;
 
+}
+
+.imgClient{
+    width: 50%;
+    @media screen and (max-width:600px) {
+        width: 80%;
+    }
 }

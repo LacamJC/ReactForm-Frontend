@@ -1,10 +1,12 @@
 import {useEffect, useState} from 'react'
+import styles from '../../scss/components/UsersList.module.css'
 import { IoIosCloseCircleOutline, IoIosAddCircle } from "react-icons/io";
 import Delete from '../events/Delete';
 
 function UsersList(){
     const [usuarios, setUsuarios] = useState([])
     const [erro, setErro] = useState(false)
+    const user = JSON.parse(localStorage.getItem('Data'))
 
     function reset(){
         fetch("http://localhost:3001/getUsers", {
@@ -24,35 +26,79 @@ function UsersList(){
             });
     }
 
+    function getUser(){
+      // console.log(user)
+
+      fetch(`http://localhost:3001/getUser/${user.id}`, {
+        method: "GET",
+        headers: {
+          'Content-type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .catch(error =>{
+        console.log("Erro ao acessar api: "+ error)
+      })
+      .then(data =>{
+        console.log("Dados coletados")
+        setUsuarios(data)
+        console.log(`Dados do usuario: ${usuarios}`)
+        setErro(false)
+      })
+      .catch(error =>{
+        console.log("Erro"  + error)
+        setErro(false)
+      })
+
+    }
+
+    function getAllUsers(){
+
+
+
+      fetch("http://localhost:3001/getUsers", {
+        method: "GET",
+        headers: {
+          'Content-type': 'application/json'
+        }
+      })
+        .then(response => response.json())
+        .catch(error =>{
+          console.log(`ERRd: ${error}`)
+          setErro(true)
+        })
+        .then(data => {
+          console.log('Dados coletados');
+          
+          setUsuarios(data);
+          console.log(data);
+          setErro(false)
+        })
+        .catch(error => {
+          console.error(`Erro: ${error}`);
+          setErro(false)
+        });
+    }
+
     useEffect(()=>{
-        fetch("http://localhost:3001/getUsers", {
-            method: "GET",
-            headers: {
-              'Content-type': 'application/json'
-            }
-          })
-            .then(response => response.json())
-            .catch(error =>{
-              console.log(`ERRd: ${error}`)
-              setErro(true)
-            })
-            .then(data => {
-              console.log('Dados coletados');
-              console.log(data);
-              setUsuarios(data);
-              setErro(false)
-            })
-            .catch(error => {
-              console.error(`Erro: ${error}`);
-              setErro(false)
-            });
+        
+        console.log(`Usuario: ${user.hasPermission}`)
+        if(user.hasPermission)
+        {
+          console.log("Usuario possui permissao administrativa")
+          getAllUsers()
+        }else{
+          console.log("Usuario nao possui permissoes administrativas")
+          getUser()
+        }
+
         
     }, [])
 
     return(
         <>
 
-            <table className="table w-75 mx-auto my-5">
+            <table className={styles.table}>
             <thead>
                 <tr>
                     <th scope="col">Id</th>
@@ -66,7 +112,8 @@ function UsersList(){
             <tbody>
             
 
-                {
+              
+                {/* {
                   
                   usuarios == undefined ? 
                   (<td className='alert alert-danger my-5 mx-auto w-50'>Erro ao acessar banco de dados</td>
@@ -75,17 +122,49 @@ function UsersList(){
                   
                   : 
                   usuarios.map((usuario)=>(
-                    <tr>
+                    <tr className={styles.tableRow}>
                         <th scope="row">{usuario.id}</th>
-                        <td>{usuario.name}</td>
-                        <td>{usuario.password}</td>
+                        <td className={styles.tableName}>{usuario.name}</td>
+                        <td className={styles.tablePassword}>{usuario.password}</td>
                         <Delete id={usuario.id} onClick={reset} />
                         <td style={{ fontSize: '24px' }}><IoIosAddCircle /></td>
                     </tr>
                 )) 
                   
-                }
+                } */}
 
+                {user.hasPermission ? 
+                
+                  
+                  
+                    usuarios == undefined ? 
+                    (<td className='alert alert-danger my-5 mx-auto w-50'>Erro ao acessar banco de dados</td>
+                      
+                    )
+                    
+                    : 
+                    usuarios.map((usuario)=>(
+                      <tr className={styles.tableRow}>
+                          <th scope="row">{usuario.id}</th>
+                          <td className={styles.tableName}>{usuario.name}</td>
+                          <td className={styles.tablePassword}>{usuario.password}</td>
+                          <Delete id={usuario.id} onClick={reset} />
+                          <td style={{ fontSize: '24px' }}><IoIosAddCircle /></td>
+                      </tr>
+                  )) 
+                    
+                  
+                
+                :
+                 (
+                 <tr className={styles.tableRow}>
+                  <th scope="row">{usuarios.id}</th>
+                  <td className={styles.tableName}>{usuarios.name}</td>
+                  <td className={styles.tablePassword}>{usuarios.password}</td>
+                  <Delete id={usuarios.id} onClick={reset} />
+                  <td style={{ fontSize: '24px' }}><IoIosAddCircle /></td>
+                 </tr>
+            )}
               
 
 

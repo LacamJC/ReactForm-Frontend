@@ -14,6 +14,15 @@ const bd_users = database.define('users', {
 
     password: {
         type: Sequelize.STRING
+    },
+
+    state: {
+        type: Sequelize.STRING
+    },
+
+    hasPermission: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
     }
 })
 

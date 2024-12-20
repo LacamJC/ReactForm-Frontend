@@ -1,0 +1,62 @@
+[
+    {
+      "estado": "Acre",
+      "capital": "Rio Branco"
+    },
+    {
+      "estado": "Alagoas",
+      "capital": "Maceió"
+    },
+    {
+      "estado": "Amapá",
+      "capital": "Macapá"
+    },
+    {
+      "estado": "Amazonas",
+      "capital": "Manaus"
+    },
+    {
+      "estado": "Bahia",
+      "capital": "Salvador"
+    },
+    {
+      "estado": "Ceará",
+      "capital": "Fortaleza"
+    },
+    {
+      "estado": "Distrito Federal",
+      "capital": "Brasília"
+    },
+    {
+      "estado": "Espírito Santo",
+      "capital": "Vitória"
+    },
+    {
+      "estado": "Goiás",
+      "capital": "Goiânia"
+    },
+    {
+      "estado": "Maranhão",
+      "capital": "São Luís"
+    },
+    {
+      "estado": "Mato Grosso",
+      "capital": "Cuiabá"
+    },
+    {
+      "estado": "Mato Grosso do Sul",
+      "capital": "Campo Grande"
+    },
+    {
+      "estado": "Minas Gerais",
+      "capital": "Belo Horizonte"
+    },
+    {
+      "estado": "Pará",
+      "capital": "Belém"
+    },
+    {
+      "estado": "Paraíba",
+      "capital": "João Pessoa"
+    }
+  ]

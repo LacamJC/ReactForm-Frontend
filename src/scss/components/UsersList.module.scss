@@ -1,0 +1,23 @@
+.table{
+    // background-color: red;
+    width: 80%;
+    margin: 100px auto;
+
+    .tableRow{
+        // background-color: blue;
+        padding: 10px 20px;
+
+    }
+
+    .tablePassword{
+        // background-color: red !important;
+        max-width: 100px;
+        overflow-x: scroll;
+    }
+
+    .tableName{
+        max-width: 100px;
+        overflow-x: auto;
+    }
+}
+

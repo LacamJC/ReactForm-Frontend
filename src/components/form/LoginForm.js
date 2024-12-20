@@ -3,11 +3,14 @@ function LoginForm(){
 
     const [name, setName] = useState([])
     const [password, setPassword] = useState([])
+    const [erro, setErro] = useState({})
     const [isLogged, setIsLogged] = useState(false)
 
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
+        setErro()
+        localStorage.removeItem('Data')
         const response = await fetch("http://localhost:3001/verifyUser", {
             method: "POST",
             headers: {
@@ -19,7 +22,20 @@ function LoginForm(){
         if(response.ok){
             const data = await response.json()
             
-            console.log(data)
+            if(data.message)
+            {
+                console.log(data.message)
+                setErro(data.message)
+            }else{
+                console.log("Sem probelmas")
+                setErro()
+                setIsLogged(true)
+            }
+            console.log("TEste")
+            localStorage.setItem('Data', JSON.stringify(data))
+            // localStorage.removeItem('Data')
+            // const localData = JSON.parse(localStorage.getItem('Data'))
+            // console.log(localData)
         }else{
             console.log("Erro ou usuario nao cadastrado")
         }
@@ -51,6 +67,8 @@ function LoginForm(){
                         autoComplete="off"    
                     ></input>
                 </div>
+                {erro ? <p className='alert alert-danger'>Senha ou usuario inválidos</p> : ""}
+                {isLogged ? <p className='alert alert-success'>Login efetuado com sucesso</p> : ""}
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
 

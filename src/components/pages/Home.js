@@ -2,11 +2,15 @@ import styles from '../../scss/components/Home.module.css'
 import imgServer from '../../img/undraw_server_9eix.svg'
 import imgClient from '../../img/undraw_online-resume_z4sp.svg'
 function Home(){
+
+    const user =  JSON.parse(localStorage.getItem('Data'))
+
     return(
         <>
             <main className="container .container-md py-5">
-            
-             
+
+                
+
                 <div  className={styles.cardDivHome}>
                 <h1 className="text-center">React Form</h1>
                 <p>Este é um projeto simples de sistema de cadastro de usuarios utilizando <a href="" className={styles.link__dest}>React</a> para o <a href="" className={styles.link__dest}>Frontend</a> e <a href="#" className={styles.link__dest}>nodeJS</a> para o <a href="" className={styles.link__dest}>Backend</a>, integrado com uma api para as operações do Banco de Dados</p>
@@ -38,7 +42,7 @@ function Home(){
                             </p>
                         </div>
                         <div className='col-12 col-md-8' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <img src={imgClient} style={{ width: '40%'}}></img>
+                            <img src={imgClient} className={styles.imgClient}></img>
                         </div>
                     </div>
                 </article>

@@ -16,6 +16,11 @@ p {
   background-position: bottom;
   background-origin: content-box;
 }
+@media screen and (max-width: 600px) {
+  .cardDivHome {
+    border-radius: 0px;
+  }
+}
 .cardDivHome h1 {
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2901960784);
 }
@@ -53,5 +58,14 @@ p {
 @media screen and (min-width: 768px) {
   .cardDivFront {
     padding: 50px 100px;
+  }
+}
+
+.imgClient {
+  width: 50%;
+}
+@media screen and (max-width: 600px) {
+  .imgClient {
+    width: 80%;
   }
 }/*# sourceMappingURL=Home.module.css.map */
