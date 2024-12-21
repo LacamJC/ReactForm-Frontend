@@ -1,36 +1,64 @@
 .nav_menu {
-  display: flex;
-  border-bottom: 2px solid black;
-}
-.nav_menu .nav_menu__list {
+  position: sticky;
+  background-color: rgba(255, 255, 255, 0.856);
+  height: 50px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 80%;
-  min-height: 40px;
-  margin: 0px auto;
-  justify-content: space-evenly;
-  align-items: center;
-  list-style: none;
+  top: 0;
 }
-.nav_menu .nav_menu__list .nav_menu__item {
-  width: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-@media screen and (max-width: 925px) {
-  .nav_menu .nav_menu__list .nav_menu__item {
-    margin: 10px 20px;
+@media screen and (min-width: 800px) {
+  .nav_menu {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.363);
   }
 }
-.nav_menu .nav_menu__list .nav_menu__item .nav_menu__link {
-  color: black;
-  font-size: 1.1rem;
+
+.nav_menu__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  transition: all 1s ease;
+}
+@media screen and (min-width: 800px) {
+  .nav_menu__list {
+    height: 100%;
+  }
+}
+.nav_menu__list .nav_menu__item {
+  list-style-type: none;
+}
+.nav_menu__list .nav_menu__item .nav_menu__link {
   text-decoration: none;
 }
-.nav_menu .nav_menu__list .nav_menu__item .nav_menu__link:hover {
-  color: rgb(73, 73, 73);
-  text-decoration: underline;
+
+.check {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .nav_menu__list {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+  }
+  .nav_menu__list .nav_menu__item {
+    margin: 15px 0;
+  }
+  .check {
+    display: block;
+    position: fixed;
+    right: 10%;
+    z-index: 3;
+    top: 3%;
+    width: 30px;
+    height: 30px;
+  }
+  .check:checked ~ .nav_menu__list {
+    left: 0;
+  }
 }/*# sourceMappingURL=Nav.module.css.map */

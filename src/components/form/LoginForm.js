@@ -3,8 +3,17 @@ function LoginForm(){
 
     const [name, setName] = useState([])
     const [password, setPassword] = useState([])
-    const [erro, setErro] = useState({})
+    const [erro, setErro] = useState(false)
     const [isLogged, setIsLogged] = useState(false)
+
+
+        function showPassword(){
+            console.log("Click")
+            const passwordInput = document.getElementById('password')
+
+            passwordInput.type == 'password' ? passwordInput.type='text' : passwordInput.type='password'
+        }
+   
 
 
     const handleSubmit = async (e) =>{
@@ -25,19 +34,19 @@ function LoginForm(){
             if(data.message)
             {
                 console.log(data.message)
-                setErro(data.message)
+                setErro(true)
             }else{
                 console.log("Sem probelmas")
-                setErro()
+                setErro(false)
                 setIsLogged(true)
             }
             console.log("TEste")
             localStorage.setItem('Data', JSON.stringify(data))
-            // localStorage.removeItem('Data')
-            // const localData = JSON.parse(localStorage.getItem('Data'))
-            // console.log(localData)
+            window.location.reload()
+            
         }else{
             console.log("Erro ou usuario nao cadastrado")
+            setErro(true)
         }
     }
 
@@ -52,6 +61,9 @@ function LoginForm(){
                         className="form-control" 
                         id="name"
                         name="name" 
+                        
+                        required
+                        autoFocus
                         onChange={(e)=>setName((e).target.value)}
                         autoComplete="off"
                     ></input>
@@ -62,11 +74,25 @@ function LoginForm(){
                         type="password" 
                         className="form-control" 
                         id="password"
+
+                        required
+                        minLength='8'
                         name="password" 
                         onChange={(e)=>setPassword((e).target.value)}
                         autoComplete="off"    
                     ></input>
+                    
                 </div>
+                
+                <div className='mb-3 form-check'>
+                        <input 
+                            type='checkbox'
+                            id='showPassword'
+                            className='form-check-input'
+                            onClick={showPassword}
+                        ></input>
+                        <label htmlFor="showPassword" className='form-check-label'>Mostrar senha</label>
+                    </div>
                 {erro ? <p className='alert alert-danger'>Senha ou usuario inválidos</p> : ""}
                 {isLogged ? <p className='alert alert-success'>Login efetuado com sucesso</p> : ""}
                 <button type="submit" className="btn btn-primary">Submit</button>
