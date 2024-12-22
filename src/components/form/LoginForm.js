@@ -46,8 +46,12 @@ function LoginForm(){
                 setIsLogged(true)
                 notifySuccess()
                   localStorage.setItem('Data', JSON.stringify(data))
+
+                  setTimeout(()=>{
+                    console.log("Passou dois sgunds")
+                    window.location.reload()
+                  }, 2000)
             }
-            console.log("TEste")
             // window.location.reload()
             
         }else{
