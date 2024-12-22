@@ -24,6 +24,9 @@
         
         .nav_menu__link{
             text-decoration: none;
+            color: black;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
         }
     }
 }
@@ -34,31 +37,43 @@
 
 @media screen and (max-width: 768px)
 {
-    .nav_menu__list{
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        align-items: center;
-        flex-direction: column;
-        z-index: 2;
+    .nav_menu{
 
-        .nav_menu__item{
-            margin: 15px 0;
-        }
-    }
+        background-color: transparent;
 
-    .check{
-        display: block;
-        position: fixed;
-        right: 10%;
-        z-index: 3;
-        top: 3%;
-        width: 30px;
-        height: 30px;
-        &:checked ~ .nav_menu__list{
-            left: 0;
+        .nav_menu__list{
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            padding: 0;
+            align-items: center;
+            flex-direction: column;
+            z-index: 2;
+            background-color: rgb(245, 245, 245);
+            box-shadow: 0px 6px 32px 5px rgba(0,0,0,0.09);
+            .nav_menu__item{
+                margin: 15px 0;
+            }
         }
+    
+        .check{
+            display: block;
+            position: fixed;
+            right: 10%;
+            z-index: 3;
+            top: 3%;
+            width: 30px;
+            height: 30px;
+            &:checked ~ .nav_menu__list{
+                transform: translateX(100%);
+    
+            }
+    
+            
+        }
+       
     }
-   
+    
 }
+

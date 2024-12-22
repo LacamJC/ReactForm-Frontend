@@ -1,5 +1,6 @@
 import styles from '../../scss/Footer.module.css'
 import ServerStatus from '../../scripts/ServerStatus'
+
 function Footer(){
     return(
         <>

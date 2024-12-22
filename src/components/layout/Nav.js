@@ -1,19 +1,13 @@
 import { Link } from "react-router-dom"
-import Logoff from "../events/Logoff"
 import styles from '../../scss/components/Nav.module.css'
+import Header from "./Header"
 function Nav(){
 
-    const user = JSON.parse(localStorage.getItem('Data'))
 
 
     return(
         <>
-      <header>
-        
-        {user ? (<h1>Logado</h1>) : (<h1><Link to="/login">Logar</Link>: | Cadastre-se</h1>)}
-        <Logoff/>
-       
-      </header>
+      <Header/>
       <nav className={styles.nav_menu}>
           <input type="checkbox" className={styles.check}></input>
           <ul className={styles.nav_menu__list}>

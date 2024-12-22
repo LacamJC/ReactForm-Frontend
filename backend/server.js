@@ -80,33 +80,35 @@ server.get('/getUser/:id', async (req,res) =>{
 server.post('/cadUsers', async(req,res)=>{
     console.log("Cadastrando usuarios")
     var password =  req.body.password
-
-    cryptPassword(password)
-    .then(hash =>{
-        password = hash
-        console.log(password)
-        const user = {
-            name : req.body.name,
-            password : password,
-            state : req.body.state
-        }
-        console.log(user)
-        bd_users.create({
-            name : user.name ,
-            password : user.password,
-            state: user.state
-        })
-        .then(()=>{
-            console.log("Usuario cadastrado com sucesso")
-        })
-        .catch(err =>{
-            console.log(`Erro ao cadastrar usuario: ${err}`)
-        })
-    })
-    .catch(err =>{
-        console.log(`Err: ${err}`)
-        res.sendStatus(501)
-    })
+    res.status(201).json({message : "Ok"})
+    // cryptPassword(password)
+    // .then(hash =>{
+    //     password = hash
+    //     console.log(password)
+    //     const user = {
+    //         name : req.body.name,
+    //         password : password,
+    //         state : req.body.state
+    //     }
+    //     console.log(user)
+    //     bd_users.create({
+    //         name : user.name ,
+    //         password : user.password,
+    //         state: user.state
+    //     })
+    //     .then(()=>{
+    //         console.log("Usuario cadastrado com sucesso")
+    //         res.status(201).json({message : "Usuario cadastrao com sucesso"})
+    //     })
+    //     .catch(err =>{
+    //         console.log(`Erro ao cadastrar usuario: ${err}`)
+    //         res.status(400).json({message : "Erro ao cadastrar usuario"})
+    //     })
+    // })
+    // .catch(err =>{
+    //     console.log(`Err: ${err}`)
+    //     res.sendStatus(501)
+    // })
 
     
 })

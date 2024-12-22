@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Estados from '../../data/estados.json'
+import toast, { Toaster } from 'react-hot-toast'
 // import bcrypt from 'bcrypt'
 function CadUser(){
 
-    const [nome, setNome] = useState()
-    const [senha, setSenha] = useState()
+    const [nome, setNome] = useState("")
+    const [senha, setSenha] = useState("")
     const [estado, setEstado] = useState()
     const [erro, setErro] = useState(false)
     const [formData, setFormData] = useState({
@@ -13,10 +14,42 @@ function CadUser(){
         state: ''
     })
     
-   
+    const notifySuccess = () => toast.success('Usuario cadastrado com sucesso')
+    const notifyError = () => toast.error('Erro ao cadastrar usuario')
+    const notifyErrorServer = () => toast.error('Falha de comunicação com o servidor')
 
     const handleChange = (event) =>{
         const { name, value} = event.target 
+
+
+        if(name == "password")
+        {
+            const input = document.getElementById(name)
+            console.log(input.value.length)
+
+            // if(input.value.length >= 6 )
+            // {
+            //     document.getElementById('minChar').classList.add('text-success')      
+            //     document.getElementById('minChar').classList.remove('text-danger')
+
+            // }
+            // else{
+            //     document.getElementById('minChar').classList.remove('text-success')
+            //     document.getElementById('minChar').classList.add('text-danger')
+
+                
+            // }
+
+            input.value.length >= 6 ? document.getElementById('minChar').classList.add('text-success') : document.getElementById('minChar').classList.remove('text-success')
+            input.value.length < 6 ? document.getElementById('minChar').classList.add('text-danger') : document.getElementById('minChar').classList.remove('text-danger')
+
+            input.value.length <= 12 ? document.getElementById('maxChar').classList.add('text-success') : document.getElementById('maxChar').classList.remove('text-success')
+            input.value.length > 12 ? document.getElementById('maxChar').classList.add('text-danger') : document.getElementById('maxChar').classList.remove('text-danger')
+
+
+        }
+
+
         setFormData({
             ...formData,
             [name]: value
@@ -26,12 +59,7 @@ function CadUser(){
 
    async function cadastrarUsuario(e){
         e.preventDefault()
-
-        console.log({nome}, {senha})
-        
-
-    
-       
+        console.log(formData)
         try {
             const response = await fetch('http://localhost:3001/cadUsers', {
             method: 'POST',
@@ -39,17 +67,28 @@ function CadUser(){
             body: JSON.stringify(formData),
             });
     
-            const data = await response.json();
-            console.log(`Dados enviados com sucesso: ${data}`);
+            if(response.ok)
+            {
+                const data = await response.json();
+                console.log("Usuario cadastrado com sucesso")
+                console.log(data.message)
+                
+                notifySuccess()
+            }else{
+                console.log("Erro ao cadastrar usuario")
+                notifyError()
+            }
         } catch (error) {
-            console.error('Error sending data:', error);
+            console.error('Erro ao enviar dados:', error);
+            notifyErrorServer()
             setErro(true)
-            alert('An error occurred. Please try again later.');
         }
         
         
    }
+       
 
+    
     return(
         <>
             <form onSubmit={cadastrarUsuario} className="w-50 mx-auto my-5">
@@ -61,24 +100,35 @@ function CadUser(){
                         id="name"
                         name="name" 
                         onChange={handleChange}
-                        value={nome}
-                        autoComplete="off"
+                        required
+                        autoFocus
                     ></input>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="senha" className="form-label">senha</label>
+                    <label htmlFor="senha" className="form-label">Senha</label>
                     <input 
                         type="password" 
                         className="form-control" 
                         id="password"
                         name="password" 
+                        required 
+                        minLength="6"
+                        maxLength="12"
                         onChange={handleChange}
                         autoComplete="off"    
                     ></input>
+                    <div className="form-text">
+                        <h3 className='form-text'>Sua senha deve conter</h3>
+                        <ul className='form-text'>
+                            <li id='minChar'>Minimo 6 caracteres</li>
+                            <li id='maxChar'>Maximo 12 caracteres</li>
+                        </ul>
+                    </div>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="estado" className='form-label'>Estado</label>
                     <select className='form-select' onChange={handleChange} id='state' name='state'>
+                        <option value="São Paulo" selected>São paulo</option>
                         {Estados.map((estado, index) =>(
                             <option key={index} value={estado.estado}>{estado.estado}</option>
                         ))}
@@ -86,7 +136,8 @@ function CadUser(){
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-            {nome}
+        
+            <Toaster/>
         </>
     )
 }

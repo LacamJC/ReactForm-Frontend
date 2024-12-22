@@ -28,4 +28,5 @@ const bd_users = database.define('users', {
 
 // bd_users.sync({force: true})
 
+
 module.exports = bd_users
