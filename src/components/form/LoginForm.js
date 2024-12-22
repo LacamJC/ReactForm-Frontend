@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import url from '../../data/url.json'
+import toast, { Toaster } from 'react-hot-toast'
 function LoginForm(){
 
     const [name, setName] = useState([])
@@ -7,6 +8,7 @@ function LoginForm(){
     const [erro, setErro] = useState(false)
     const [isLogged, setIsLogged] = useState(false)
 
+    const [errorMessage, setErrorMessage] = useState("")
 
         function showPassword(){
             console.log("Click")
@@ -15,7 +17,8 @@ function LoginForm(){
             passwordInput.type == 'password' ? passwordInput.type='text' : passwordInput.type='password'
         }
    
-
+        const notifyError = () => toast.error("erro ao logar")
+        const notifySuccess = () => toast.success("Login com sucesso")
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
@@ -35,15 +38,17 @@ function LoginForm(){
             if(data.message)
             {
                 console.log(data.message)
+                notifyError()
                 setErro(true)
             }else{
                 console.log("Sem probelmas")
                 setErro(false)
                 setIsLogged(true)
+                notifySuccess()
+                  localStorage.setItem('Data', JSON.stringify(data))
             }
             console.log("TEste")
-            localStorage.setItem('Data', JSON.stringify(data))
-            window.location.reload()
+            // window.location.reload()
             
         }else{
             console.log("Erro ou usuario nao cadastrado")
@@ -98,7 +103,7 @@ function LoginForm(){
                 {isLogged ? <p className='alert alert-success'>Login efetuado com sucesso</p> : ""}
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-
+            <Toaster/>
         </>
     )
 }
