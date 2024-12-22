@@ -9,7 +9,7 @@ function UsersList(){
     const user = JSON.parse(localStorage.getItem('Data'))
     console.log(user ? "SIM" : "NAO")
     function reset(){
-        fetch("http://localhost:3001/getUsers", {
+        fetch(`${url.url}/getUsers`, {
             method: "GET",
             headers: {
               'Content-type': 'application/json'
