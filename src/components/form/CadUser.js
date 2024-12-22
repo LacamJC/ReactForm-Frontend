@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Estados from '../../data/estados.json'
 import toast, { Toaster } from 'react-hot-toast'
-// import bcrypt from 'bcrypt'
+import url from '../../data/url.json'
 function CadUser(){
 
     const [nome, setNome] = useState("")
@@ -61,7 +61,7 @@ function CadUser(){
         e.preventDefault()
         console.log(formData)
         try {
-            const response = await fetch('http://localhost:3001/cadUsers', {
+            const response = await fetch(`${url.url}/cadUsers`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),

@@ -1,5 +1,5 @@
 import { useState, useEffect} from 'react'
-
+import url from '../data/url.json'
 
 function ServerStatus(){
     const [status, setStatus] = useState('Verificando servidor...')
@@ -7,7 +7,7 @@ function ServerStatus(){
     useEffect(()=>{
         const fetchData = async() =>{
         try{
-          const response = await fetch('http://localhost:3001/ping')
+          const response = await fetch(`${url.url}/ping`)
           const data = await response.json()
           console.log(data)
           setStatus(data.status ? "Ligado" : " Desligado")

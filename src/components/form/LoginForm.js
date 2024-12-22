@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import url from '../../data/url.json'
 function LoginForm(){
 
     const [name, setName] = useState([])
@@ -20,7 +21,7 @@ function LoginForm(){
         e.preventDefault()
         setErro()
         localStorage.removeItem('Data')
-        const response = await fetch("http://localhost:3001/verifyUser", {
+        const response = await fetch(`${url.url}/verifyUser`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -76,7 +77,7 @@ function LoginForm(){
                         id="password"
 
                         required
-                        minLength='8'
+                        minLength='6'
                         name="password" 
                         onChange={(e)=>setPassword((e).target.value)}
                         autoComplete="off"    

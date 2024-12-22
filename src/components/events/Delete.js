@@ -1,11 +1,13 @@
 import { IoIosCloseCircleOutline } from "react-icons/io"
+import url from '../../data/url.json'
 function Delete({ id }){
+    
 
     
     async function deleteUser() {
         try{
             let idNum = (id).toString()
-            const response = await fetch(`http://localhost:3001/deleteUser/${idNum}}`,{
+            const response = await fetch(`${url.url}/deleteUser/${idNum}}`,{
                 method: 'DELETE',
              
                 }

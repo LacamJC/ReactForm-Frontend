@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import styles from '../../scss/components/UsersList.module.css'
 import { IoIosCloseCircleOutline, IoIosAddCircle } from "react-icons/io";
 import Delete from '../events/Delete';
-
+import url from '../../data/url.json'
 function UsersList(){
     const [usuarios, setUsuarios] = useState([])
     const [erro, setErro] = useState(false)
@@ -30,7 +30,7 @@ function UsersList(){
       // console.log(user)
 
       if(user){
-        fetch(`http://localhost:3001/getUser/${user.id}`, {
+        fetch(`${url.url}/getUser/${user.id}`, {
           method: "GET",
           headers: {
             'Content-type': 'application/json'
