@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Estados from '../../data/estados.json'
 import toast, { Toaster } from 'react-hot-toast'
 import url from '../../data/url.json'
+import { Link } from 'react-router-dom'
 function CadUser(){
 
     const [nome, setNome] = useState("")
@@ -127,14 +128,20 @@ function CadUser(){
                 </div>
                 <div className="mb-3">
                     <label htmlFor="estado" className='form-label'>Estado</label>
-                    <select className='form-select' onChange={handleChange} id='state' name='state'>
-                        <option value="São Paulo" selected>São paulo</option>
+                    <select className='form-select'  onChange={handleChange} id='state' name='state'>
+                        <option value="São Paulo" >São paulo</option>
                         {Estados.map((estado, index) =>(
                             <option key={index} value={estado.estado}>{estado.estado}</option>
                         ))}
                     </select>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <div class="mb-3">
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </div>
+                <span>
+                    Já possui cadastro? <Link to="/login">Faça Login !</Link>
+                </span>
+
             </form>
         
             <Toaster/>

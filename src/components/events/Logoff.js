@@ -1,3 +1,5 @@
+import styles from '../../scss/layout/Header.module.css'
+
 function Logoff(){
 
     function handleChange(){
@@ -8,7 +10,7 @@ function Logoff(){
 
     return(
         <>
-            <input type="button" value="Sair" onClick={handleChange}></input>
+            <input type="button" value="Sair" onClick={handleChange} className={styles.btn}></input>
         </>
     )
 }

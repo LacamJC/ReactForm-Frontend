@@ -17,6 +17,15 @@
 
     .header_connect{
         
+        display: flex;
+        // background-color: red;
+        justify-content: center;
+        align-items: center;
+
+        h2{
+            font-size: 1.2rem;
+            padding-right: 10px;
+        }
 
         a{
             color: black;
@@ -27,6 +36,20 @@
                 text-decoration: underline;
             }
 
+        }
+
+        .btn{
+            background-color: #4f4f4f;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            padding: 4px 16px;
+            letter-spacing: 2px;
+            transition: all 0.5s ease;
+
+            &:hover{
+                background-color: #4f4f4faf;
+            }
         }
        
     }

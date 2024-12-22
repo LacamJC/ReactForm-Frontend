@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import url from '../../data/url.json'
 import toast, { Toaster } from 'react-hot-toast'
+import { Link } from 'react-router-dom'
 function LoginForm(){
 
     const [name, setName] = useState([])
@@ -105,7 +106,10 @@ function LoginForm(){
                     </div>
                 {erro ? <p className='alert alert-danger'>Senha ou usuario inválidos</p> : ""}
                 {isLogged ? <p className='alert alert-success'>Login efetuado com sucesso</p> : ""}
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <div className="mb-3 mx-auto">
+                    <button type="submit" className="btn btn-primary btn-lg">Submit</button>
+                </div>
+                <span>Não possui cadastro ? <Link to="/CadastrarUsuario">Faça seu cadastro aqui !</Link></span>
             </form>
             <Toaster/>
         </>
