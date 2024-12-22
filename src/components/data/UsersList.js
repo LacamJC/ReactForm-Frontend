@@ -62,7 +62,7 @@ function UsersList(){
 
       if(user)
       {
-        fetch("http://localhost:3001/getUsers", {
+        fetch(`${url.url}/getUsers`, {
           method: "GET",
           headers: {
             'Content-type': 'application/json'
