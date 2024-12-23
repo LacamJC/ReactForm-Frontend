@@ -35,3 +35,7 @@ O logout ocorre exclusivamente no cliente, onde os dados do usuário são removi
 <p>
 Após o login, o usuário poderá acessar a lista de usuários. Essa lista é carregada a partir de uma requisição ao servidor, que retorna os dados dos usuários de acordo com as permissões do usuário logado. Se o usuário tiver permissão, verá a lista completa; caso contrário, verá apenas suas próprias informações.
 </p>
+
+
+####
+[Github do backend](https://github.com/Dex209/backend.git)
