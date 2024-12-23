@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import styles from '../../scss/components/UsersList.module.css'
 import { IoIosCloseCircleOutline, IoIosAddCircle } from "react-icons/io";
 import Delete from '../events/Delete';
+import Edit from '../events/Edit'
 import url from '../../data/url.json'
 function UsersList(){
     const [usuarios, setUsuarios] = useState([])
@@ -210,7 +211,7 @@ function UsersList(){
                      <td className={styles.tableName}>{usuarios.name}</td>
                      <td className={styles.tablePassword}>{usuarios.password}</td>
                      <Delete id={usuarios.id} onClick={reset} />
-                     <td style={{ fontSize: '24px' }}><IoIosAddCircle /></td>
+                     <Edit id={usuarios.id}/>
                     </tr>
                )
 

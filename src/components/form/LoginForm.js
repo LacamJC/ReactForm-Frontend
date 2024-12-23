@@ -18,47 +18,53 @@ function LoginForm(){
             passwordInput.type == 'password' ? passwordInput.type='text' : passwordInput.type='password'
         }
    
-        const notifyError = () => toast.error("erro ao logar")
+        const notifyError = (msg) => toast.error("Erro: "+msg)
         const notifySuccess = () => toast.success("Login com sucesso")
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
         setErro()
         localStorage.removeItem('Data')
-        const response = await fetch(`${url.url}/verifyUser`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ name, password })
-        })
 
-        if(response.ok){
-            const data = await response.json()
-            
-            if(data.message)
-            {
-                console.log(data.message)
-                notifyError()
-                setErro(true)
+        try{
+            const response = await fetch(`${url.url}/verifyUser`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({ name, password })
+            })
+            if(response.ok){
+                const data = await response.json()
+                
+                if(data.message)
+                {
+                    console.log(data.message)
+                    notifyError()
+                    setErro(true)
+                }else{
+                    console.log("Sem probelmas")
+                    setErro(false)
+                    setIsLogged(true)
+                    notifySuccess()
+                      localStorage.setItem('Data', JSON.stringify(data))
+    
+                      setTimeout(()=>{
+                        console.log("Passou dois sgunds")
+                        window.location.reload()
+                      }, 2000)
+                }
+                // window.location.reload()
+                
             }else{
-                console.log("Sem probelmas")
-                setErro(false)
-                setIsLogged(true)
-                notifySuccess()
-                  localStorage.setItem('Data', JSON.stringify(data))
-
-                  setTimeout(()=>{
-                    console.log("Passou dois sgunds")
-                    window.location.reload()
-                  }, 2000)
+                console.log("Erro ou usuario nao cadastrado")
+                setErro(true)
             }
-            // window.location.reload()
-            
-        }else{
-            console.log("Erro ou usuario nao cadastrado")
-            setErro(true)
+        }catch(error){
+            console.log("Erro ao tentar o fetch " + error )
+            notifyError('Sem comunicação com o servidor')
         }
+        
     }
 
 

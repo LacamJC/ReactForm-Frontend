@@ -4,6 +4,7 @@ import ListaUsuario from './components/pages/ListaUsuario'
 import Nav from './components/layout/Nav'
 import Login from './components/pages/Login'
 import Footer from './components/layout/Footer'
+import EditData from './components/pages/EditData'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import styles from './scss/Main.module.css' 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -18,6 +19,7 @@ function App() {
           <Route path="/CadastrarUsuario" element={<CadastrarUsuario />} />
           <Route path="/ListaUsuario" element={<ListaUsuario/>}/>
           <Route path="/Login" element={<Login />} />
+          <Route path="/EditUser/:id" element={<EditData/>}/>
         </Routes>
         <Footer/>
       </Router>

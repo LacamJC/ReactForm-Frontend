@@ -129,7 +129,6 @@ function CadUser(){
                 <div className="mb-3">
                     <label htmlFor="estado" className='form-label'>Estado</label>
                     <select className='form-select'  onChange={handleChange} id='state' name='state'>
-                        <option value="São Paulo" >São paulo</option>
                         {Estados.map((estado, index) =>(
                             <option key={index} value={estado.estado}>{estado.estado}</option>
                         ))}
