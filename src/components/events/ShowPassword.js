@@ -7,7 +7,7 @@ function ShowPassword(){
     }
     return(
         <>
-                    <div className='mb-3 form-check'>
+                    <div className='mb-3 mt-3 form-check'>
                         <input 
                             type='checkbox'
                             id='showPassword'

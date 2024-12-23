@@ -3,6 +3,7 @@ import Estados from '../../data/estados.json'
 import toast, { Toaster } from 'react-hot-toast'
 import url from '../../data/url.json'
 import { Link } from 'react-router-dom'
+import ShowPassword from '../events/ShowPassword'
 function CadUser(){
 
     const [nome, setNome] = useState("")
@@ -118,6 +119,7 @@ function CadUser(){
                         onChange={handleChange}
                         autoComplete="off"    
                     ></input>
+                    <ShowPassword/>
                     <div className="form-text">
                         <h3 className='form-text'>Sua senha deve conter</h3>
                         <ul className='form-text'>

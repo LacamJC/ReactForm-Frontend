@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import url from '../../data/url.json'
+import styles from '../../scss/components/LoginForm.module.css'
 import toast, { Toaster } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 function LoginForm(){
@@ -70,12 +71,12 @@ function LoginForm(){
 
     return(
         <>
-            <form className="w-50 mx-auto my-5" onSubmit={handleSubmit}>
+            <form className={` mx-auto my-5 ${styles.form}`} onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="nome" className="form-label">Nome</label>
                     <input 
                         type="text" 
-                        className="form-control" 
+                        className={`form-control ${styles.input}`}
                         id="name"
                         name="name" 
                         
@@ -89,7 +90,7 @@ function LoginForm(){
                     <label htmlFor="senha" className="form-label">senha</label>
                     <input 
                         type="password" 
-                        className="form-control" 
+                        className={`form-control ${styles.input}`}
                         id="password"
 
                         required
@@ -115,7 +116,7 @@ function LoginForm(){
                 <div className="mb-3 mx-auto">
                     <button type="submit" className="btn btn-primary btn-lg">Submit</button>
                 </div>
-                <span>Não possui cadastro ? <Link to="/CadastrarUsuario">Faça seu cadastro aqui !</Link></span>
+                <span className={styles.span}><p>Não possui cadastro ?</p> <Link to="/CadastrarUsuario">Faça seu cadastro aqui !</Link></span>
             </form>
             <Toaster/>
         </>

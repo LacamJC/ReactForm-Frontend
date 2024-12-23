@@ -1,0 +1,19 @@
+.form{
+    max-width: 600px;
+    padding: 0px 20px;
+    margin: auto;
+    // border: 1px solid black;
+
+    .span{
+        // border: 1px solid black;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+      p{
+        padding: 0;
+        margin: 0;
+      }
+    }
+}
