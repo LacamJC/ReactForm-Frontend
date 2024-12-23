@@ -1,6 +1,10 @@
-.table{
+._table{
     // background-color: red;
-    width: 80%;
+    width: 70% !important;
+    @media screen and (max-width: 468px){
+        min-width: 500px;
+        margin: 100px 50px;
+    }
     margin: 100px auto;
 
     .tableRow{
@@ -12,12 +16,21 @@
     .tablePassword{
         // background-color: red !important;
         max-width: 100px;
-        overflow-x: scroll;
+        // overflow-x: ;
     }
 
     .tableName{
         max-width: 100px;
-        overflow-x: auto;
+        // overflow-x: auto;
     }
 }
 
+.btnEsc{
+    transition: 0.5s ease all;
+    transform: scale( 1.4);
+    z-index: 1;
+    &:hover{
+        cursor: pointer;
+        filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.247));
+    }
+}

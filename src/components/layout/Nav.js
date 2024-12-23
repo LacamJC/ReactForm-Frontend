@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import styles from '../../scss/components/Nav.module.css'
+import styles from '../../scss/layout/Nav.module.css'
 import Header from "./Header"
 import { CiMenuBurger } from "react-icons/ci"
 function Nav(){

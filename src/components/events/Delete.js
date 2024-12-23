@@ -1,5 +1,6 @@
 import { IoIosCloseCircleOutline } from "react-icons/io"
 import url from '../../data/url.json'
+import styles from '../../scss/components/UsersList.module.css'
 function Delete({ id }){
     
     
@@ -36,7 +37,7 @@ function Delete({ id }){
 
     return(
         <>
-            <td onClick={deleteUser} style={{ fontSize: '24px' }}><IoIosCloseCircleOutline/></td>
+            <td onClick={deleteUser} style={{ fontSize: '24px' }}   title="Deletar usuario"><IoIosCloseCircleOutline className={styles.btnEsc}/></td>
         </>
     )
 }

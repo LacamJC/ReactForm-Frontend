@@ -116,7 +116,7 @@ function UsersList(){
     return(
         <>
 
-            <table className={styles.table}>
+            <table className={`${styles._table} table table-striped table-hover`}>
             <thead>
                 <tr>
                     <th scope="col">Id</th>
@@ -199,7 +199,7 @@ function UsersList(){
                           <td className={styles.tableName}>{usuario.name}</td>
                           <td className={styles.tablePassword}>{usuario.password}</td>
                           <Delete id={usuario.id} onClick={reset} />
-                          <td style={{ fontSize: '24px' }}><IoIosAddCircle /></td>
+                          <Edit id={usuario.id}/>
                       </tr>
                   )) 
 
@@ -211,7 +211,7 @@ function UsersList(){
                      <td className={styles.tableName}>{usuarios.name}</td>
                      <td className={styles.tablePassword}>{usuarios.password}</td>
                      <Delete id={usuarios.id} onClick={reset} />
-                     <Edit id={usuarios.id}/>
+                     <Edit id={usuarios.id} />
                     </tr>
                )
 

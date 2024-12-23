@@ -1,10 +1,11 @@
 .nav_menu {
   position: sticky;
-  background-color: rgba(255, 255, 255, 0.856);
+  background-color: rgba(255, 255, 255, 0.938);
   height: 50px;
   display: flex;
   flex-direction: row;
   top: 0;
+  z-index: 1001;
 }
 @media screen and (min-width: 800px) {
   .nav_menu {
@@ -54,7 +55,7 @@
     padding: 0;
     align-items: center;
     flex-direction: column;
-    z-index: 2;
+    z-index: 1004;
     background-color: rgb(245, 245, 245);
     box-shadow: 0px 6px 32px 5px rgba(0, 0, 0, 0.09);
   }
@@ -68,14 +69,14 @@
     right: 65px;
     display: block;
     transition: 0.8s ease all;
-    z-index: 3;
+    z-index: 1005;
   }
   .nav_menu .check {
     display: block;
     position: fixed;
     right: 10%;
     opacity: 0;
-    z-index: 4;
+    z-index: 1006;
     top: 3%;
     width: 30px;
     height: 30px;

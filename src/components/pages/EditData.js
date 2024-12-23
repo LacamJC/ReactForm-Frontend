@@ -1,11 +1,14 @@
 import { useParams } from "react-router"
+import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Estados from "../../data/estados.json"
 import url from "../../data/url.json"
 import toast, { Toaster } from 'react-hot-toast'
 import ShowPassword from "../events/ShowPassword"
+import Return from "../events/Return"
 function EditData(){
-    const notifySuccess = toast.success('Atualizações realizadas') 
+    const notifySuccess = (msg) =>toast.success(msg) 
+    const navigate = useNavigate()
     
      const [formData, setFormData] = useState({
             id: '',
@@ -26,6 +29,8 @@ function EditData(){
 
     const params = useParams()
     const id = params.id
+    const mainUser = JSON.parse(localStorage.getItem('Data'))
+    
 
     useEffect(()=>{
         fetch(`${url.url}/getUser/${id}`, {
@@ -72,15 +77,12 @@ function EditData(){
 
     function handleChange(event)
     {
-        //   console.log(event.target.value)
-        //   console.log(event.target.id)
           const {name, value } = event.target
           setFormData({
               ...formData,
               [name]: value
           })
 
-        //   console.log(`]]]]]]]]]]]]]]]] ${JSON.stringify(formData, null, 2)}`)
 
 
     }
@@ -88,8 +90,6 @@ function EditData(){
     async function putUser(e){
         e.preventDefault()
         console.log("Enviando dados para atualização")
-        // console.log(`Dados atuais do usuario ${JSON.stringify(data, null, 2)}`)
-        // console.log(`Novos dados do usuario ${JSON.stringify(formData, null, 2)}`)
 
         try{
             const response = await fetch(`${url.url}/atualizarDados/${id}`,{
@@ -100,9 +100,20 @@ function EditData(){
 
             if(response.ok){
                 const data = await response.json()
-                // console.log("Novos dados enviados com sucesso")
-                console.log(data.message)
-                notifySuccess()
+
+                if(data.id==mainUser.id)
+                {
+                    notifySuccess('Alteração realizada, redirecionando usuario')
+
+                    setTimeout(()=>{
+                        localStorage.removeItem('Data')
+                        window.location.href="/login"
+                    },3000)
+                        
+                }else{
+                navigate('/ListaUsuario')
+                notifySuccess('Alteração realizada')
+                }
             }
             else{
                 console.log("Erro ao enviar novos dados")
@@ -164,6 +175,7 @@ function EditData(){
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit</button>
+                <Return type="button" />
             </form>
             <Toaster/>
         </>

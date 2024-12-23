@@ -16,8 +16,8 @@ function CadUser(){
         state: ''
     })
     
-    const notifySuccess = () => toast.success('Usuario cadastrado com sucesso')
-    const notifyError = () => toast.error('Erro ao cadastrar usuario')
+    const notifySuccess = (msg) => toast.success(msg)
+    const notifyError = (msg) => toast.error(msg)
     const notifyErrorServer = () => toast.error('Falha de comunicação com o servidor')
 
     const handleChange = (event) =>{
@@ -29,18 +29,7 @@ function CadUser(){
             const input = document.getElementById(name)
             console.log(input.value.length)
 
-            // if(input.value.length >= 6 )
-            // {
-            //     document.getElementById('minChar').classList.add('text-success')      
-            //     document.getElementById('minChar').classList.remove('text-danger')
-
-            // }
-            // else{
-            //     document.getElementById('minChar').classList.remove('text-success')
-            //     document.getElementById('minChar').classList.add('text-danger')
-
-                
-            // }
+  
 
             input.value.length >= 6 ? document.getElementById('minChar').classList.add('text-success') : document.getElementById('minChar').classList.remove('text-success')
             input.value.length < 6 ? document.getElementById('minChar').classList.add('text-danger') : document.getElementById('minChar').classList.remove('text-danger')
@@ -72,13 +61,13 @@ function CadUser(){
             if(response.ok)
             {
                 const data = await response.json();
-                console.log("Usuario cadastrado com sucesso")
-                console.log(data.message)
-                
-                notifySuccess()
+                console.log(JSON.stringify(data,null,2))
+                console.log(data)
+                notifySuccess(data.message)
             }else{
-                console.log("Erro ao cadastrar usuario")
-                notifyError()
+                const data = await response.json()
+                console.log("Erro ao cadastrar usuario" + (JSON.stringify(data)) )
+                notifyError(data.message)
             }
         } catch (error) {
             console.error('Erro ao enviar dados:', error);
@@ -136,7 +125,7 @@ function CadUser(){
                         ))}
                     </select>
                 </div>
-                <div class="mb-3">
+                <div className="mb-3">
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </div>
                 <span>
