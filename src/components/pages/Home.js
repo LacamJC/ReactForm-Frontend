@@ -1,5 +1,6 @@
 import styles from '../../scss/components/Home.module.css'
 import imgServer from '../../img/undraw_server_9eix.svg'
+import Logoff from '../events/Logoff'
 import imgClient from '../../img/undraw_online-resume_z4sp.svg'
 function Home(){
 
@@ -9,7 +10,11 @@ function Home(){
         <>
             <main className="container .container-md py-5">
 
-                
+                {user ? (
+                    <div className='alert alert-success w-50 mx-auto'>
+                        <p className='text-center'>Olá {user.user} <Logoff st='btn btn-danger'/></p>
+                    </div>
+                ) : ""} 
 
                 <div  className={styles.cardDivHome}>
                 <h1 className="text-center">React Form</h1>

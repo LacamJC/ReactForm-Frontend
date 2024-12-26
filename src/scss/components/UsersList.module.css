@@ -6,6 +6,7 @@
   ._table {
     min-width: 500px;
     margin: 100px 50px;
+    overflow-x: scroll;
   }
 }
 ._table .tableRow {

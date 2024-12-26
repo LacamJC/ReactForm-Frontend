@@ -1,6 +1,6 @@
 import styles from '../../scss/layout/Header.module.css'
 
-function Logoff(){
+function Logoff({st}){
 
     function handleChange(){
         localStorage.removeItem('Data')
@@ -10,7 +10,7 @@ function Logoff(){
 
     return(
         <>
-            <input type="button" value="Sair" onClick={handleChange} className={styles.btn}></input>
+            <input type="button" value="Sair" onClick={handleChange} className={`${styles.btn} ${st}`}></input>
         </>
     )
 }
