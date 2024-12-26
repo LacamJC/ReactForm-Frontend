@@ -4,19 +4,18 @@
   "private": true,
   "dependencies": {
     "axios": "^1.7.9",
-    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
-    "cra-template": "1.2.0",
+    "cra-template": "^1.2.0",
     "express": "^4.21.2",
-    "mysql2": "^3.11.5",
+    "mysql2": "^3.12.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.4.0",
-    "react-router-dom": "^7.0.2",
-    "react-scripts": "5.0.1",
+    "react-router-dom": "^7.1.1",
+    "react-scripts": "^5.0.1",
     "sequelize": "^6.37.5",
     "web-vitals": "^4.2.4"
   },
@@ -43,5 +42,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "<p>\r     Uma aplicação React, junto a um servidor Node.js com banco de dados MySQL, apresenta um sistema CRUD que se comunica com um servidor no backend. A conexão com o banco de dados é feita utilizando a biblioteca Sequelize para operações e o Express para a criação do servidor Node.js.\r </p>",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }

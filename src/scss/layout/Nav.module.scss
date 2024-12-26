@@ -65,21 +65,22 @@
         }
     
         .menuBurguer{
-            position: absolute;
-            font-size: 2rem;
-            top: 20px;
-            right: 65px;
             display: block;
-            transition: 0.8s ease all;
-            z-index: 1005;
-
+            position: fixed;
+            right: 10%;
+            opacity: 1;
+            z-index: 1007;
+            top: 3%;
+            width: 30px;
+            height: 30px;
+            transition: all ease 0.6s;
         }
         .check{
             display: block;
             position: fixed;
             right: 10%;
-            opacity: 0;
-            z-index: 1006;
+            opacity: 0.2;
+            z-index: 1008;
             top: 3%;
             width: 30px;
             height: 30px;
