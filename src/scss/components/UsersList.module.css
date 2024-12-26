@@ -1,3 +1,8 @@
+._container {
+  overflow-x: scroll;
+  width: 100%;
+}
+
 ._table {
   width: 70% !important;
   margin: 100px auto;
